@@ -17,6 +17,8 @@
 					<label>Masukan Judul Postingan</label>
 					<input type="text" autocomplete="off" autofocus required name="judul" class="form-control" id="judul" placeholder="ketimbang ngemis xxxx" onkeyup="createslug()">
 					<input type="hidden" name="slug" id="slug1" class="form-control">
+
+
 				</div>
 
 				{{-- <script src="//cdn.tinymce.com/4/tinymce.min.js"></script> --}}
@@ -51,6 +53,21 @@
 							<div id="donasi" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
 								<div class="accordion-inner">
 									<h5 style="color: green;">Donasi <i class="fa fa-check"></i></h5>
+									<!-- update rahmadi 02 04 2020 -->
+									<div class="form-group">
+									<label>Tanggal Awal</label>
+									<input type="date" autocomplete="off" autofocus required name="startdate" class="form-control" id="judul" placeholder="Tanggal Awal">
+									</div>
+
+									<div class="form-group">
+									<label>Tanggal Akhir</label>
+									<input type="date" autocomplete="off" autofocus required name="enddate" class="form-control" id="judul" placeholder="Tanggal Akhir">
+									</div>
+
+									<div class="form-group">
+									<label>Target Nominal</label>
+									<input type="text" autocomplete="off" autofocus required name="nominal" class="form-control" id="judul" placeholder="Tanggal Awal">
+									</div>
 								</div>
 							</div>
 						</div>

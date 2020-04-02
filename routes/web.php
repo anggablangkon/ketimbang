@@ -48,6 +48,7 @@ Route::get('/rancangankerja', 'ArtikelController@rancangankerja');
 Route::get('/kontakkami', 'ArtikelController@kontakkami');
 Route::get('/recruitment', 'ArtikelController@recruitment');
 Route::get('/pengumuman-recruitment', 'ArtikelController@pengumumanrecruitment');
+Route::get('/hash', 'ArtikelController@hash');
 
 
 Auth::routes();

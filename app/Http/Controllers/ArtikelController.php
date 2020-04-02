@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ArtikelController extends Controller
 {
@@ -63,5 +64,9 @@ class ArtikelController extends Controller
         $data   = DB::table('recruitment')->orderBy('nama', 'Asc')->get();
         
         return view('/pengumumanrecruitment', ['data' => $data]);
+    }
+    public function hash()
+    {
+        echo  hash::make('123456');
     }
 }
