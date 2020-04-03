@@ -24,8 +24,11 @@
                 <a class="nav-link page-scroll" href="{{ url('/rancangankerja') }}">RANCANGAN KERJA</a>
               </li> 
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="{{ url('/aktifitasdandonasi') }}">AKTIVITAS DAN DONASI</a>
+                <a class="nav-link page-scroll" href="{{ url('/aktifitasdandonasi') }}">AKTIVITAS BLOGS </a>
               </li> 
+              <li class="nav-item">
+                <a class="nav-link page-scroll" href="{{ url('/aktifitasdonasi') }}">DONASI </a>
+              </li>               
               @if (Route::has('login'))
                 @auth
                 <li class="nav-item">
