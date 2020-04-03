@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
+use Str;
 
 class AdminController extends Controller
 {
@@ -170,6 +171,10 @@ class AdminController extends Controller
 
     public function simpanpostingan(Request $request)
     {
+    	// memisahkan 1 dengan string di depannya
+    	$string       = explode(',', $request->jenispost);
+    	$flag 		  = $string[0];
+    	$jenispost    = $string[1];
 
     	//membuat kondisi untuk foto yang dimasukan 
 	    if($request->foto == true)
@@ -185,12 +190,19 @@ class AdminController extends Controller
 
 	    		'id'		=> NULL,
 	    		'judul'		=> $request->judul,
-	    		'slug' 		=> $request->slug,
-	    		'jenispost' => $request->jenispost,
+	    		'slug' 		=> Str::slug($request->slug),
+	    		'jenispost' => $jenispost,
+	    		'flag' 		=> $flag,
 	    		'isi' 		=> $request->isipostingan,
 	    		'foto' 		=> '/imagepost/'.$foto->getClientOriginalName(),
 	    		'cby'		=> Auth::user()->name,
+	    		'mby'		=> NULL,
 	    		'date'		=> Date('d M Y'),
+	    		'cdate'		=> date('Y-m-d H:i:s'),
+	    		'mdate'		=> NULL,
+	    		'startdate' => $request->tgl_awal,
+	    		'enddate'  => $request->tgl_akhir,
+	    		'isdelete'  => 0,
 
 	    	]);
 
@@ -209,6 +221,11 @@ class AdminController extends Controller
 	    		'foto' 		=> '/imagepost/default.png',
 	    		'cby'		=> Auth::user()->name,
 	    		'date'		=> Date('d M Y'),
+	    		'cdate'		=> date('Y-m-d H:i:s'),
+	    		'mdate'		=> NULL,
+	    		'startdate' => $request->tgl_awal,
+	    		'enddate'  => $request->tgl_akhir,
+	    		'isdelete'  => 0,
 
 	    	]);
 

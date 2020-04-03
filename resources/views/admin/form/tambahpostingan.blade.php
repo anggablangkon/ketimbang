@@ -2,6 +2,10 @@
 
 @section('title', 'Tambah data postingan komunitas')
 
+@section('css')
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+@endsection
+
 @section('content')
 <!-- content -->
 <form action="{{ url('/simpanpostingan') }}" method="post" enctype="multipart/form-data">
@@ -22,7 +26,7 @@
 				</div>
 
 				{{-- <script src="//cdn.tinymce.com/4/tinymce.min.js"></script> --}}
-				<textarea name="content" class="form-control my-editor"></textarea>
+				<textarea name="isipostingan" class="form-control my-editor"></textarea>
 
 
 			</div>
@@ -38,82 +42,107 @@
 					<label>Pilih Jenis Postingan</label>
 					<select name="jenispost" required class="form-control accordion-dropdpwn">
 						<option value="" selected>Pilih Jenis Postingan</option>
-						<option value="blogs" class="collapsed text-dark" data-toggle="collapse"
+						<option value="0,Blogs" class="collapsed text-dark" data-toggle="collapse"
 						data-parent="#accordion" href="#blogs"
 						aria-expanded="false" aria-controls="blogs">Blogs</option>
-						<option class="collapsed text-dark" data-toggle="collapse"
+						<option value="1,Donasi" class="collapsed text-dark" data-toggle="collapse"
 						data-parent="#accordion" href="#donasi"
 						aria-expanded="false" aria-controls="donasi">
-							Donasi
-						</option>
-					</select>
+						Donasi
+					</option>
+				</select>
 
-					<div class="accordion" id="accordion">
-						<div class="accordion-group">
-							<div id="donasi" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-								<div class="accordion-inner">
-									<h5 style="color: green;">Donasi <i class="fa fa-check"></i></h5>
-									<!-- update rahmadi 02 04 2020 -->
-									<div class="form-group">
-									<label>Tanggal Awal</label>
-									<input type="date" autocomplete="off" autofocus required name="startdate" class="form-control" id="judul" placeholder="Tanggal Awal">
-									</div>
-
-									<div class="form-group">
-									<label>Tanggal Akhir</label>
-									<input type="date" autocomplete="off" autofocus required name="enddate" class="form-control" id="judul" placeholder="Tanggal Akhir">
-									</div>
-
-									<div class="form-group">
-									<label>Target Nominal</label>
-									<input type="text" autocomplete="off" autofocus required name="nominal" class="form-control" id="judul" placeholder="Tanggal Awal">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="accordion-group">
-							<div id="blogs" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-								<div class="accordion-inner">
-									<h5 style="color: green;">Blogs <i class="fa fa-check"></i></h5>
-								</div>
+				<div class="accordion" id="accordion">
+					<div class="accordion-group">
+						<div id="donasi" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+							<div class="accordion-inner">
+								<h5 style="color: green;">Donasi <i class="fa fa-check"></i></h5>
 							</div>
 						</div>
 					</div>
-
-				</div>
-
-				<div class="form-group" style="padding-bottom: 1px;">
-					<label>Masukan foto Depan Postingan</label>
-					<br/>
-					<font color="red">Ket: Input foto dengan ukuran kurang dari 2 mb untuk membuat website optimal</font>
-					<div class="">
-						<div class="">
-							<input type="file"  name="foto" id="file" onchange="return fileValidation()" />
-						</div>
-						<div class="">
-							<!-- Image preview -->
-							<div class="card-body">
-								<div id="imagePreview"></div>
+					<div class="accordion-group">
+						<div id="blogs" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+							<div class="accordion-inner">
+								<h5 style="color: green;">Blogs <i class="fa fa-check"></i></h5>
 							</div>
-							
 						</div>
-
 					</div>
 				</div>
 
 			</div>
-			&nbsp;
-			<div class="card card-body">
-				<input type="submit" style="padding-bottom: 4px;" value="SIMPAN" class="btn btn-primary" name="simpan">
-				<input type="reset" value="RESET" class="btn btn-warning" name="reset">
+
+
+			<div class="form-group">
+				<label>Tanggal Awal</label>
+				<div class="input-group date">
+					<div class="input-group-addon">
+						<span class="glyphicon glyphicon-th"></span>
+					</div>
+					<input placeholder="masukkan tanggal Awal" type="text" class="form-control datepicker" name="tgl_awal">
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Tanggal Akhir</label>
+				<div class="input-group date">
+					<div class="input-group-addon">
+						<span class="fa fa-date"></span>
+					</div>
+					<input placeholder="masukkan tanggal Akhir" type="text" class="form-control datepicker" name="tgl_akhir">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label>Target Nominal</label>
+				<input type="text" autocomplete="off" autofocus required name="nominal" class="form-control" id="judul" placeholder="Nominal">
+			</div>
+
+			<div class="form-group" style="padding-bottom: 1px;">
+				<label>Masukan foto Depan Postingan</label>
+				<br/>
+				<font color="red">Ket: Input foto dengan ukuran kurang dari 2 mb untuk membuat website optimal</font>
+				<div class="">
+					<div class="">
+						<input type="file"  name="foto" id="file" onchange="return fileValidation()" />
+					</div>
+					<div class="">
+						<!-- Image preview -->
+						<div class="card-body">
+							<div id="imagePreview"></div>
+						</div>
+
+					</div>
+
+				</div>
 			</div>
 
 		</div>
+		&nbsp;
+		<div class="card card-body">
+			<input type="submit" style="padding-bottom: 4px;" value="SIMPAN" class="btn btn-primary" name="simpan">
+			<input type="reset" value="RESET" class="btn btn-warning" name="reset">
+		</div>
 
 	</div>
+
+</div>
 </form>
 
+@endsection
+
+@section('javascript')
 <script src="{{ asset('/kokitindo/postingan.js') }}" defer></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+
+{{-- Data Piceker, edit by ahya37 --}}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('.datepicker').datepicker({
+			format: "yyyy-mm-dd",
+			autoclose: true
+		});
+	});
+</script>
+
 @endsection
