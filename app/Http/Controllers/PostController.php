@@ -32,17 +32,13 @@ class PostController extends Controller
 	    if($request->foto == true && $request->nominal == true)
 	    {
 
-	    	//mendefinisikan foto kedalam sistem
-	    	$destination = "imagepost";
-	    	$foto        = $request->file('foto');
-			$foto->move($destination, $foto->getClientOriginalName());
 			
 			$data['judul'] 		= $request->judul;
 			$data['slug']  		= Str::slug($request->slug);
 			$data['jenispost']  = $jenispost;
 			$data['flag']		= $flag;
 			$data['isi']		= $request->isi;
-			$data['foto']		= '/imagepost/'.$foto->getClientOriginalName();
+			// $data['foto']		= '/imagepost/'.$foto->getClientOriginalName();
 			$data['cby']		= Auth::user()->name;
 			$data['mby']		= NULL;
 			$data['date']		= Date('d M Y');
@@ -52,10 +48,16 @@ class PostController extends Controller
 			$data['enddate']	= date('Y-m-d', strtotime($request->tgl_akhir));
 			$data['nominal']    = $request->nominal;
 			$data['isdelete']   = 0;
-
+	    	$foto        		= $request->file('foto');
+            $data['foto']  		= $foto->getClientOriginalExtension();
 
 			//model, simpan ke tabel postingan
-			$save  = app('PostModel')->getInsertPost($data);
+			$savegenerateId  	= app('PostModel')->getInsertPost($data);
+
+			//mendefinisikan foto kedalam sistem
+	    	$destination 		= "imagepost";
+            $imagename	        = $savegenerateId.'.'.$foto->getClientOriginalExtension();
+			$foto->move($destination, $imagename);
 
 	    	return redirect('/tambahpostingan')->with('success', 'Data Berhasil Disimpan');
 

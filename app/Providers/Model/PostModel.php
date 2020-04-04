@@ -16,6 +16,9 @@ class PostModel extends ServiceProvider
         $sql    = 'insert into postingan (id, judul, slug, jenispost, flag, isi, foto, cby, mby, date, cdate, mdate, startdate, enddate, nominalpencapaian, 
                  isdelete) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
         $result = DB::insert($sql, array(null, $data['judul'], $data['slug'], $data['jenispost'], $data['flag'], $data['isi'], $data['foto'], $data['cby'], $data['mby'], $data['date'], $data['cdate'], $data['mdate'], $data['startdate'], $data['enddate'], $data['nominal'], $data['isdelete']));
+
+        #untuk mendapatkan id secara otomatis
+        $result = DB::getPdo()->lastInsertId();
         return $result; 
     }
 
