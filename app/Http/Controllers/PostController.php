@@ -29,7 +29,7 @@ class PostController extends Controller
     	$jenispost    = $string[1];
 
     	//membuat kondisi untuk foto yang dimasukan 
-	    if($request->foto == true)
+	    if($request->foto == true && $request->nominal == true)
 	    {
 
 	    	//mendefinisikan foto kedalam sistem
@@ -79,7 +79,7 @@ class PostController extends Controller
 			$data['mdate']		= NULL;
 			$data['startdate']  = date('Y-m-d', strtotime($request->tgl_awal));
 			$data['enddate']	= date('Y-m-d', strtotime($request->tgl_akhir));
-			$data['nominal']    = $request->nominal;
+			$data['nominal']    = '';
 			$data['isdelete']   = 0;
 
 			// model, simpan ke tabel postingan
