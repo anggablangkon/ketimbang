@@ -41,6 +41,7 @@ Route::post('/updatepostingan', 'PostController@updatepostingan');
 Route::get('/bacapostingan/{slug}', 'ArtikelController@bacapostingan');
 Route::get('/lihatdonasi/{slug}', 'ArtikelController@lihatdonasi');
 Route::get('/aktifitasdandonasi', 'ArtikelController@aktifitasdandonasi');
+Route::get('/aktifitasdonasi', 'ArtikelController@aktifitasdonasi');
 
 Route::get('/tentangkami', 'ArtikelController@tentangkami');
 Route::get('/rancangankerja', 'ArtikelController@rancangankerja');

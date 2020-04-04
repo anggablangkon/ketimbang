@@ -28,11 +28,11 @@
             <div class="col-lg-8">
               @desktop
               <center>
-              <img src="{{ asset($postingan->foto) }}" style="width: 500px; height: 300px;">
+              <img @if(strlen($postingan->foto) >= 6) src="{{ asset($postingan->foto) }}" @else src="{{ asset('/imagepost') }}/{{$postingan->id}}.{{$postingan->foto}}" @endif style="width: 500px; height: 300px;">
               </center>
               @enddesktop
               @mobile
-              <img src="{{ asset($postingan->foto) }}" style="width: 100%; height: 250px;">
+              <img @if(strlen($postingan->foto) >= 6) src="{{ asset($postingan->foto) }}" @else src="{{ asset('/imagepost') }}/{{$postingan->id}}.{{$postingan->foto}}" @endif style="width: 100%; height: 250px;">
               @endmobile
               <br/><br/>
               

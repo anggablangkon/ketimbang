@@ -39,7 +39,11 @@
             <!-- Blog Item Starts -->
             <div class="blog-item-wrapper">
               <div class="blog-item-img">
-                <img src="{{ asset($tampil->foto) }}" style="height: 150px" alt="">
+                @if(strlen($tampil->foto) >= 6)
+                  <img src="{{ asset($tampil->foto) }}" style="height: 150px" alt="">
+                @else
+                  <img src="{{ asset('/imagepost') }}/{{$tampil->id}}.{{$tampil->foto}}" style="height: 150px" alt="">
+                @endif
               </div>
               <div class="blog-item-text"> 
                 <a href="{{ url('/lihatdonasi') }}/{{ $tampil->slug }}" style="font-size: 14px;">{{ strtoupper(substr($tampil->judul, 0, 30)) }}..</a>

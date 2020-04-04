@@ -38,6 +38,17 @@ class ArtikelController extends Controller
 
         return view('/aktifitasdandonasi', ['donasi' => $donasi, 'blogs' => $blogs, 'paginate' => $paginate, 'paginate1' => $paginate1]);
     }
+
+    public function aktifitasdonasi()
+    {
+        
+        $paginate  = $donasi = DB::table('postingan')->where('jenispost', 'donasi')->paginate(3);
+
+       
+
+
+        return view('/aktifitasdonasi', compact('donasi','paginate'));
+    }
     
      public function tentangkami()    
     {
