@@ -28,8 +28,15 @@ class PostController extends Controller
     	$flag 		  = $string[0];
     	$jenispost    = $string[1];
 
+    	#membuat kondisi nominal
+    	if($request->nominal == true){
+			$data['nominal']    = $request->nominal;
+    	}else{
+			$data['nominal']    = 0;
+    	}
+
     	//membuat kondisi untuk foto yang dimasukan 
-	    if($request->foto == true && $request->nominal == true)
+	    if($request->foto == true)
 	    {
 
 			
@@ -46,7 +53,6 @@ class PostController extends Controller
 			$data['mdate']		= NULL;
 			$data['startdate']  = date('Y-m-d', strtotime($request->tgl_awal));
 			$data['enddate']	= date('Y-m-d', strtotime($request->tgl_akhir));
-			$data['nominal']    = $request->nominal;
 			$data['isdelete']   = 0;
 	    	$foto        		= $request->file('foto');
             $data['foto']  		= $foto->getClientOriginalExtension();
@@ -81,7 +87,6 @@ class PostController extends Controller
 			$data['mdate']		= NULL;
 			$data['startdate']  = date('Y-m-d', strtotime($request->tgl_awal));
 			$data['enddate']	= date('Y-m-d', strtotime($request->tgl_akhir));
-			$data['nominal']    = '';
 			$data['isdelete']   = 0;
 
 			// model, simpan ke tabel postingan
