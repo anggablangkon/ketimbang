@@ -230,6 +230,10 @@ return [
         'MobileDetect' => Riverskies\Laravel\MobileDetect\Facades\MobileDetect::class,
         'Image' => Intervention\Image\Facades\Image::class,
 
+
+        // Model Database
+        'PostModel' => App\Providers\Model\PostModel::class,
+
     ],
 
 ];

@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 use Str;
-use App\Providers\Model\PostModel;
 
 class AdminController extends Controller
 {
@@ -165,6 +164,81 @@ class AdminController extends Controller
     	return redirect('/listdataanggota')->with('success', 'Data Berhasil dihapus');
     }
 
+    public function tambahpostingan()
+    {
+    	return view('admin/form/tambahpostingan');
+    }
+
+    public function simpanpostingan(Request $request)
+    {
+    	// memisahkan 1 dengan string di depannya
+    	$string       = explode(',', $request->jenispost);
+    	$flag 		  = $string[0];
+    	$jenispost    = $string[1];
+
+    	//membuat kondisi untuk foto yang dimasukan 
+	    if($request->foto == true)
+	    {
+
+	    	//mendefinisikan foto kedalam sistem
+	    	$destination = "imagepost";
+	    	$foto        = $request->file('foto');
+			$foto->move($destination, $foto->getClientOriginalName());
+			
+			$data['judul'] => $request->judul,
+			$data['slug']  => Str::slug()
+
+	    	//memasukan data kedalam table postingan
+	    	$simpan = DB::table('postingan')->insert([
+
+	    		'id'		=> NULL,
+	    		'judul'		=> $request->judul,
+	    		'slug' 		=> Str::slug($request->slug),
+	    		'jenispost' => $jenispost,
+	    		'flag' 		=> $flag,
+	    		'isi' 		=> $request->isipostingan,
+	    		'foto' 		=> '/imagepost/'.$foto->getClientOriginalName(),
+	    		'cby'		=> Auth::user()->name,
+	    		'mby'		=> NULL,
+	    		'date'		=> Date('d M Y'),
+	    		'cdate'		=> date('Y-m-d H:i:s'),
+	    		'mdate'		=> NULL,
+	    		'startdate' => $request->tgl_awal,
+	    		'enddate'  => $request->tgl_akhir,
+	    		'isdelete'  => 0,
+
+	    	]);
+
+	    	return redirect('/tambahpostingan')->with('success', 'Data Berhasil Disimpan');
+
+	    }else{
+
+	    	//memasukan data kedalam table postingan
+	    	$simpan = DB::table('postingan')->insert([
+
+	    		'id'		=> NULL,
+	    		'judul'		=> $request->judul,
+	    		'slug' 		=> $request->slug,
+	    		'jenispost' => $request->jenispost,
+	    		'isi' 		=> $request->isipostingan,
+	    		'foto' 		=> '/imagepost/default.png',
+	    		'cby'		=> Auth::user()->name,
+	    		'date'		=> Date('d M Y'),
+	    		'cdate'		=> date('Y-m-d H:i:s'),
+	    		'mdate'		=> NULL,
+	    		'startdate' => $request->tgl_awal,
+	    		'enddate'  => $request->tgl_akhir,
+	    		'isdelete'  => 0,
+
+	    	]);
+
+	    	return redirect('/tambahpostingan')->with('success', 'Data Berhasil Disimpan');
+
+	    }
+
+
+    }
+
     public function updatepostingan(Request $request)
     {
     	//membuat kondisi untuk foto yang dimasukan 
@@ -209,7 +283,21 @@ class AdminController extends Controller
 
 	    }
     }
-    
+
+    public function editpostingan($id)
+    {
+    	//mengambil data dari dalam database
+    	$tampilkan = DB::table('postingan')->where('id', $id)->first();
+
+    	return view('admin/form/editpostingan', ['tampilkan' => $tampilkan]);
+    }
+
+    public function lihatpostingan()
+    {
+    	$blogs		= DB::table('postingan')->get();
+
+    	return view('/admin/lihatpostingan', ['blogs' => $blogs]);	    	
+    }
 
     public function hapuspostingan($id)
     {

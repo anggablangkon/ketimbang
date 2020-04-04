@@ -3,7 +3,8 @@
 @section('title', 'Tambah data postingan komunitas')
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ <link rel="stylesheet" href="/resources/demos/style.css">
 @endsection
 
 @section('content')
@@ -11,6 +12,8 @@
 <form action="{{ url('/simpanpostingan') }}" method="post" enctype="multipart/form-data">
 	<div class="row">
 		<div class="col-sm-8" style="padding-bottom: 10px;">
+
+			@include('assets/message')
 
 			<div class="card card-body">
 				<h5>Buat Postingan</h5>
@@ -58,27 +61,13 @@
 							<div class="accordion-inner">
 								<h5 style="color: green;">Donasi <i class="fa fa-check"></i></h5>
 							</div>
-						</div>
-					</div>
-					<div class="accordion-group">
-						<div id="blogs" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-							<div class="accordion-inner">
-								<h5 style="color: green;">Blogs <i class="fa fa-check"></i></h5>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-
-
-			<div class="form-group">
+							<div class="form-group">
 				<label>Tanggal Awal</label>
 				<div class="input-group date">
 					<div class="input-group-addon">
 						<span class="glyphicon glyphicon-th"></span>
 					</div>
-					<input placeholder="masukkan tanggal Awal" type="text" class="form-control datepicker" name="tgl_awal">
+					<input placeholder="masukkan tanggal Awal" type="text" class="form-control datepicker"  name="tgl_awal">
 				</div>
 			</div>
 			<div class="form-group">
@@ -93,7 +82,20 @@
 
 			<div class="form-group">
 				<label>Target Nominal</label>
-				<input type="text" autocomplete="off" autofocus required name="nominal" class="form-control" id="judul" placeholder="Nominal">
+				<input type="text" autocomplete="off" autofocus name="nominal" class="form-control" id="judul" placeholder="Nominal">
+			</div>
+						</div>
+					</div>
+					<div class="accordion-group">
+						<div id="blogs" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+							<div class="accordion-inner">
+								<h5 style="color: green;">Blogs <i class="fa fa-check"></i></h5>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
 			</div>
 
 			<div class="form-group" style="padding-bottom: 1px;">
@@ -102,7 +104,7 @@
 				<font color="red">Ket: Input foto dengan ukuran kurang dari 2 mb untuk membuat website optimal</font>
 				<div class="">
 					<div class="">
-						<input type="file"  name="foto" id="file" onchange="return fileValidation()" />
+						<input type="file"  name="foto" id="file" required onchange="return fileValidation()" />
 					</div>
 					<div class="">
 						<!-- Image preview -->
@@ -134,15 +136,13 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
 
-{{-- Data Piceker, edit by ahya37 --}}
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+{{-- Datepicker --}}
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
-	$(document).ready(function() {
-		$('.datepicker').datepicker({
-			format: "yyyy-mm-dd",
-			autoclose: true
-		});
-	});
-</script>
+  $( function() {
+    $( ".datepicker" ).datepicker({ dateFormat: 'dd-mm-yy'}).val();
+  } );
+  </script>
 
 @endsection

@@ -28,13 +28,12 @@ Route::post('/simpananggota', 'AdminController@simpananggota');
 Route::get('/editanggota/{noanggota}', 'AdminController@editanggota');
 Route::post('/updateanggota', 'AdminController@updateanggota');
 
-
-
-Route::get('/tambahpostingan', 'AdminController@tambahpostingan');
-Route::get('/lihatpostingan', 'AdminController@lihatpostingan');
-Route::post('/simpanpostingan', 'AdminController@simpanpostingan');
+#POSTINGAN (EDIT BY AHYAID - 3 APRIL 2020)
+Route::get('/tambahpostingan', 'PostController@tambahpostingan');
+Route::get('/lihatpostingan', 'PostController@lihatpostingan');
+Route::post('/simpanpostingan', 'PostController@simpanpostingan');
 Route::get('/hapuspostingan/{id}', 'AdminController@hapuspostingan');
-Route::get('/editpostingan/{id}', 'AdminController@editpostingan');
+Route::get('/editpostingan/{id}', 'PostController@editpostingan');
 Route::post('/updatepostingan', 'AdminController@updatepostingan');
 
 
