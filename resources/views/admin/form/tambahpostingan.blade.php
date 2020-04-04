@@ -29,7 +29,7 @@
 				</div>
 
 				{{-- <script src="//cdn.tinymce.com/4/tinymce.min.js"></script> --}}
-				<textarea name="isipostingan" class="form-control my-editor"></textarea>
+				<textarea name="isi" class="form-control my-editor"></textarea>
 
 
 			</div>
