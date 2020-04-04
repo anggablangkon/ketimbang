@@ -4,12 +4,12 @@
 
 @section('css')
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
- <link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
 @endsection
 
 @section('content')
 <!-- content -->
-<form action="{{ url('/simpanpostingan') }}" method="post" enctype="multipart/form-data">
+<form action="{{ url('/updatepostingan') }}" method="post" enctype="multipart/form-data">
 	<div class="row">
 		<div class="col-sm-8" style="padding-bottom: 10px;">
 
@@ -22,6 +22,7 @@
 				<!-- content -->
 				<div class="form-group">
 					<label>Masukan Judul Postingan</label>
+					<input type="hidden" name="id" value="{{$tampilkan->id}}">
 					<input type="text" autocomplete="off" autofocus required name="judul" class="form-control" id="judul" placeholder="ketimbang ngemis xxxx" onkeyup="createslug()" value="{{$tampilkan->judul}}">
 					<input type="hidden" name="slug" id="slug1" class="form-control">
 
@@ -44,48 +45,51 @@
 				<div class="form-group">
 					<label>Pilih Jenis Postingan</label>
 					<select name="jenispost" required class="form-control accordion-dropdpwn">
-						<option value="" selected>Pilih Jenis Postingan</option>
+						<option value="">Pilih Jenis Postingan</option>
 						<option value="0,Blogs" class="collapsed text-dark" data-toggle="collapse"
 						data-parent="#accordion" href="#blogs"
-						aria-expanded="false" aria-controls="blogs">Blogs</option>
+						aria-expanded="false" aria-controls="blogs" @if($tampilkan->flag == 0) selected @endif>Blogs</option>
 						<option value="1,Donasi" class="collapsed text-dark" data-toggle="collapse"
 						data-parent="#accordion" href="#donasi"
-						aria-expanded="false" aria-controls="donasi">
+						aria-expanded="false" aria-controls="donasi" @if($tampilkan->flag == 1) selected @endif>
 						Donasi
 					</option>
 				</select>
 
 				<div class="accordion" id="accordion">
+				@if($tampilkan->flag == 1 )
 					<div class="accordion-group">
 						<div id="donasi" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
 							<div class="accordion-inner">
 								<h5 style="color: green;">Donasi <i class="fa fa-check"></i></h5>
 							</div>
-							<div class="form-group">
-				<label>Tanggal Awal</label>
-				<div class="input-group date">
-					<div class="input-group-addon">
-						<span class="glyphicon glyphicon-th"></span>
-					</div>
-					<input placeholder="masukkan tanggal Awal" type="text" class="form-control datepicker"  name="tgl_awal">
-				</div>
-			</div>
-			<div class="form-group">
-				<label>Tanggal Akhir</label>
-				<div class="input-group date">
-					<div class="input-group-addon">
-						<span class="fa fa-date"></span>
-					</div>
-					<input placeholder="masukkan tanggal Akhir" type="text" class="form-control datepicker" name="tgl_akhir">
-				</div>
-			</div>
 
-			<div class="form-group">
-				<label>Target Nominal</label>
-				<input type="text" autocomplete="off" autofocus name="nominal" class="form-control" id="judul" placeholder="Nominal">
-			</div>
+							<div class="form-group">
+								<label>Tanggal Awal</label>
+								<div class="input-group date">
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-th"></span>
+									</div>
+									<input  type="text" class="form-control datepicker"  name="tgl_awal" value="{{$tampilkan->startdate}}">
+								</div>
+							</div>
+							<div class="form-group">
+								<label>Tanggal Akhir</label>
+								<div class="input-group date">
+									<div class="input-group-addon">
+										<span class="fa fa-date"></span>
+									</div>
+									<input type="text" class="form-control datepicker" name="tgl_akhir" value="{{$tampilkan->enddate}}">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label>Target Nominal</label>
+								<input type="text" autocomplete="off" autofocus name="nominal" class="form-control" id="judul" placeholder="Nominal" value="{{$tampilkan->nominalpencapaian}}">
+							</div>
 						</div>
 					</div>
+					@endif
 					<div class="accordion-group">
 						<div id="blogs" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
 							<div class="accordion-inner">
@@ -104,7 +108,8 @@
 				<font color="red">Ket: Input foto dengan ukuran kurang dari 2 mb untuk membuat website optimal</font>
 				<div class="">
 					<div class="">
-						<input type="file"  name="foto" id="file" required onchange="return fileValidation()" />
+						<input type="file"  name="foto" id="file" onchange="return fileValidation()" />
+						<input type="hidden" name="foto_lama" value="{{$tampilkan->foto}}">
 					</div>
 					<div class="">
 						<!-- Image preview -->
@@ -140,9 +145,9 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
-  $( function() {
-    $( ".datepicker" ).datepicker({ dateFormat: 'dd-mm-yy'}).val();
-  } );
-  </script>
+	$( function() {
+		$( ".datepicker" ).datepicker({ dateFormat: 'dd-mm-yy'}).val();
+	} );
+</script>
 
 @endsection

@@ -34,4 +34,25 @@ class PostModel extends ServiceProvider
         $result = collect(\DB::select($sql))->first();
         return $result;
     }
+
+    public function getUpdatePost($data)
+    {
+        $sql  = 'update postingan set judul="'.$data['judul'].'",
+                slug="'.$data['slug'].'",
+                jenispost="'.$data['jenispost'].'",
+                flag="'.$data['flag'].'",
+                isi="'.$data['isi'].'",
+                mby="'.$data['mby'].'",
+                date="'.$data['date'].'",
+                mdate="'.$data['mdate'].'",
+                startdate="'.$data['startdate'].'",
+                enddate="'.$data['enddate'].'",
+                nominalpencapaian="'.$data['nominal'].'",
+                isdelete="'.$data['isdelete'].'",
+                foto="'.$data['foto'].'" 
+                where id="'.$data['id'].'" ';
+
+        $result = DB::update($sql);
+        return $result;
+    }
 }

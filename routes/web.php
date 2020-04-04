@@ -34,7 +34,7 @@ Route::get('/lihatpostingan', 'PostController@lihatpostingan');
 Route::post('/simpanpostingan', 'PostController@simpanpostingan');
 Route::get('/hapuspostingan/{id}', 'AdminController@hapuspostingan');
 Route::get('/editpostingan/{id}', 'PostController@editpostingan');
-Route::post('/updatepostingan', 'AdminController@updatepostingan');
+Route::post('/updatepostingan', 'PostController@updatepostingan');
 
 
 //membaca postingan kegiatan
