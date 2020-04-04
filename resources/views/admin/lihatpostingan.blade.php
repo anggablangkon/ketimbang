@@ -18,7 +18,7 @@
 			<thead>
 				<tr>
 					<th>No</th>
-					<th>Foto</th>
+					{{-- <th>Foto</th> --}}
 					<th>Judul</th>
 					<th>Tanggal Post</th>
 					<th>Jenis Post</th>
@@ -31,9 +31,7 @@
 				@foreach($blogs as $tampil)
 				<tr>
 					<td>{{ $no++ }}</td>
-					<td>
-						<img src="{{asset('imagepost/' .$tampil->id.'.'.$tampil->foto)}}" width="50px" height="50px">
-					</td>
+					{{-- <td><img src="{{asset('imagepost/' .$tampil->id.'.'.$tampil->foto)}}" width="50px" height="50px"></td> --}}
 					<td>{{ $tampil->judul }}</td>
 					<td>{{ $tampil->date }}</td>
 					<td>
