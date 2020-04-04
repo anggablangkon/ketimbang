@@ -57,9 +57,8 @@
 				</select>
 
 				<div class="accordion" id="accordion">
-				@if($tampilkan->flag == 1 )
 					<div class="accordion-group">
-						<div id="donasi" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+						<div id="donasi" class="collapse @if($tampilkan->flag == 1) show @endif" aria-labelledby="headingThree" data-parent="#accordion">
 							<div class="accordion-inner">
 								<h5 style="color: green;">Donasi <i class="fa fa-check"></i></h5>
 							</div>
@@ -89,9 +88,8 @@
 							</div>
 						</div>
 					</div>
-					@endif
 					<div class="accordion-group">
-						<div id="blogs" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+						<div id="blogs" class="collapse @if($tampilkan->flag == 0) show @endif" aria-labelledby="headingTwo" data-parent="#accordion">
 							<div class="accordion-inner">
 								<h5 style="color: green;">Blogs <i class="fa fa-check"></i></h5>
 							</div>
