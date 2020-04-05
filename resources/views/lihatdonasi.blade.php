@@ -19,11 +19,11 @@
               <!--   postingan -->
                 @desktop
                 <center>
-                <img src="{{ asset($postingan->foto) }}" style="width: 100%; height: 300px;">
+                <img src="{{ asset('imagepost/'. $postingan->id.'.'.$postingan->foto) }}" style="width: 100%; height: 300px;">
                 </center>
                 @enddesktop
                 @mobile
-                <img src="{{ asset($postingan->foto) }}" style="width: 100%" height="300px">
+                <img src="{{ asset('imagepost/'. $postingan->id.'.'.$postingan->foto) }}" style="width: 100%" height="300px">
                 @endmobile
                 <br/><br/>
                 <center>
