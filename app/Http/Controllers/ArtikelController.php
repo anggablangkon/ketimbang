@@ -12,9 +12,23 @@ class ArtikelController extends Controller
     public function bacapostingan($slug)
     {
     	//memgambil data untuk menampilkan postingan
-    	$postingan    = DB::table('postingan')->where('slug', $slug)->first();
+    	$postingan    = DB::table('postingan as tb1')
+                        ->select('tb1.judul','tb2.name','tb1.date','tb1.foto','tb1.isi','tb2.id','tb2.created_at')
+                        ->leftjoin('users as tb2','tb2.id','=','tb1.cby')
+                        ->where('tb1.slug', $slug)
+                        ->first();
 
-    	return view('/bacapostingan', ['postingan' => $postingan]);
+        $idpenulis    = $postingan->id;
+
+        //mengambil lima postingan
+        $listpost     = DB::table('postingan as tb1')
+                        ->select('tb1.judul','tb1.slug')
+                        ->where('tb1.cby','=',$idpenulis)
+                        ->where('tb1.jenispost','=','blogs')
+                        ->paginate(5);
+        $no           = 1;
+
+    	return view('/bacapostingan', compact('postingan','listpost','no'));
 
     }
 
@@ -22,9 +36,7 @@ class ArtikelController extends Controller
     {
     	//memgambil data untuk menampilkan postingan
         $postingan    = DB::table('postingan')->where('slug', $slug)->first();
-
     	$donasi       = DB::table('postingan')->where('jenispost', 'donasi')->paginate(8);
-
     	return view('/lihatdonasi', ['postingan' => $postingan, 'donasi' => $donasi]);
 
     }

@@ -2,65 +2,98 @@
 
 @section('title','Ketimbang Ngemis Pandeglang')
 
+@section('halamanatas')
+
+@endsection
 
 @section('content')
-    
-    &nbsp;
-  <!-- Awesome Screens Section Start -->
-    <section id="" class="screens-shot section">
-      <div class="container">
-        <div class="section-header">   
-          <div class="row">
-            <!-- start content -->
-            <div class="col-sm-2">
+
+<!-- Blog Section -->
+<section id="blog" class="section">
+  <!-- Container Starts -->
+  <div class="container">
+    <br/>
+
+    <div class="row">
+
+      <div class="col-sm-8">
+        <div class="card bg-light text-dark">
+          <div class="card-body">
+
+            <h5 class="h5" style="font-weight: bold; color: black;">{{ strtoupper($postingan->judul) }}</h5>
+            <p>Tanggal Post : {{ $postingan->date }}</p>
+            <hr/>
+            @desktop
+            <center>
+              <img @if(strlen($postingan->foto) >= 6) src="{{ asset($postingan->foto) }}" @else src="{{ asset('/imagepost') }}/{{$postingan->id}}.{{$postingan->foto}}" @endif style="width: 100%;">
+            </center>
+            @enddesktop
+            @mobile
+            <img @if(strlen($postingan->foto) >= 6) src="{{ asset($postingan->foto) }}" @else src="{{ asset('/imagepost') }}/{{$postingan->id}}.{{$postingan->foto}}" @endif style="width: 100%; height: 250px;">
+            @endmobile
+            <br/>
+            <div style="text-align:justify; color:black;">
+              {!! $postingan->isi !!}
             </div>
-            <div class="col-lg-8">
-              <p class="btn btn-subtitle wow fadeInDown" data-wow-delay="0.2s">Post By KNP</p><br/>       
-              <h2 class="section-title">{{ $postingan->judul }}</h2>
-            </div>
+
           </div>
         </div>
-        <div class="row">
+      </div>
 
-            <!-- start content -->
-            <div class="col-sm-2">
+      
+      <div class="col-sm-4">
+        @mobile
+        <br/>
+        @endmobile
+        <div class="card bg-light text-dark">
+          <div class="card-body">
+
+            <center>
+              <img src="{{asset('/images/anga.jpg')}}" alt="user" class="rounded-circle" style="width: 85px; height: 85px;">
+            </center> 
+            <br/>
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped ">
+                <tbody>
+                  <tr>
+                    <th>Penulis </th>
+                    <th> {{ $postingan->name }}</th>
+                  </tr>
+                  <tr>
+                    <th>Bergabung </th>
+                    <th> {{ $postingan->created_at }}</th>
+                  </tr>
+                  <tr>
+                    <th colspan="2">
+                      <center>
+                        <a class="btn btn-primary"><i class='lni lni-user'></i> Detail Profile </a>
+                      </center>
+                    </th>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div class="col-lg-8">
-              @desktop
-              <center>
-              <img @if(strlen($postingan->foto) >= 6) src="{{ asset($postingan->foto) }}" @else src="{{ asset('/imagepost') }}/{{$postingan->id}}.{{$postingan->foto}}" @endif style="width: 500px; height: 300px;">
-              </center>
-              @enddesktop
-              @mobile
-              <img @if(strlen($postingan->foto) >= 6) src="{{ asset($postingan->foto) }}" @else src="{{ asset('/imagepost') }}/{{$postingan->id}}.{{$postingan->foto}}" @endif style="width: 100%; height: 250px;">
-              @endmobile
-              <br/><br/>
-              
-              <center>
-              <p class="btn btn-subtitle wow fadeInDown" data-wow-delay="0.2s">Oleh {{ $postingan->cby }}</p>       
-              <p class="btn btn-subtitle wow fadeInDown" data-wow-delay="0.2s">{{ $postingan->date }}</p>       
-              </center>
-              <br/>
-              <p style="text-align:justify; color:black;">
-                {!! $postingan->isi !!}
-              </p>
 
-              <br/>
-                <b>
-                  Share To  :
-                  <a href="whatsapp://send?text=https://ketimbangngemispdg.org/lihatdonasi/{{ $postingan->slug }}" target="_blank" class="btn-sm btn-success">Whatsapp</a>
-                  <a href="http://www.facebook.com/sharer.php?u=https://ketimbangngemispdg.org/lihatdonasi/{{ $postingan->slug }}" class="btn-sm btn-primary" target="_blank">Facebook</a>
-                  <a href="https://twitter.com/share?url=https://ketimbangngemispdg.org/{{ $postingan->slug }}" target="_blank" class="btn-sm btn-info">twitter</a>
-                  <!--<a href="https://plus.google.com/share?url=https://ketimbangngemispdg.org/lihatdonasi/{{ $postingan->slug }}" target="_blank" class="btn-sm btn-danger">Google Plus</a>-->
-                </b>
-                </b>
-            </div>
-            <!-- end content -->
-
+          </div>
+        </div>
+        <br/>
+        <div class="card bg-light text-dark">
+          <div class="card-body">
+            <b>Tulisan trending yang dibuat :</b>
+            <hr/>
+            @foreach($listpost as $key => $values)
+            <ul>
+              <li>{{$no++}}. <a href="{{ url('/bacapostingan/') }}/{{ $values->slug }}">{{ substr(strtoupper($values->judul),0,30) }} ..</a></li>
+            </ul>
+            @endforeach
+          </div>
         </div>
       </div>
-    </section>
-    <!-- Awesome Screens Section End -->
+
+    </div>
+  </div>
+</section>
+<!-- blog Section End -->
 
 
 @endsection

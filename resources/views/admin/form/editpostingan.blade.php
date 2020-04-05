@@ -24,9 +24,7 @@
 					<label>Masukan Judul Postingan</label>
 					<input type="hidden" name="id" value="{{$tampilkan->id}}">
 					<input type="text" autocomplete="off" autofocus required name="judul" class="form-control" id="judul" placeholder="ketimbang ngemis xxxx" onkeyup="createslug()" value="{{$tampilkan->judul}}">
-					<input type="hidden" name="slug" id="slug1" class="form-control">
-
-
+					<input type="hidden" name="slug" value="{{$tampilkan->slug}}" id="slug1" class="form-control">
 				</div>
 
 				{{-- <script src="//cdn.tinymce.com/4/tinymce.min.js"></script> --}}

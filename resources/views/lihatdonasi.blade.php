@@ -19,11 +19,19 @@
               <!--   postingan -->
                 @desktop
                 <center>
-                <img src="{{ asset('imagepost/'. $postingan->id.'.'.$postingan->foto) }}" style="width: 100%; height: 300px;">
+                  @if(strlen($postingan->foto) >= 6)
+                   <img src="{{ asset($postingan->foto) }}" style="width: 100%; height: 300px;">
+                  @else
+                   <img src="{{ asset('/imagepost') }}/{{$postingan->id}}.{{$postingan->foto}}" style="width: 100%; height: 300px;">
+                  @endif
                 </center>
                 @enddesktop
                 @mobile
-                <img src="{{ asset('imagepost/'. $postingan->id.'.'.$postingan->foto) }}" style="width: 100%" height="300px">
+                  @if(strlen($postingan->foto) >= 6)
+                     <img src="{{ asset($postingan->foto) }}" style="width: 100%" height="300px">
+                  @else
+                     <img src="{{ asset('/imagepost') }}/{{$postingan->id}}.{{$postingan->foto}}" style="width: 100%" height="300px">
+                  @endif
                 @endmobile
                 <br/><br/>
                 <center>
@@ -82,8 +90,8 @@
 
                               <ul>
                                 <?php $no = 1; ?> 
-                                @foreach($donasi as $tampil)
-                                  <li>{{ $no++ }}. <a href="{{ url('/lihatdonasi') }}/{{ $tampil->slug }}">{{ $tampil->judul }}</a></li>
+                                @foreach($donasi as $postingan)
+                                  <li>{{ $no++ }}. <a href="{{ url('/lihatdonasi') }}/{{ $postingan->slug }}">{{ $postingan->judul }}</a></li>
                                 @endforeach
                               </ul>
                              

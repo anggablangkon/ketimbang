@@ -46,7 +46,7 @@ class PostController extends Controller
 			$data['flag']		= $flag;
 			$data['isi']		= $request->isi;
 			// $data['foto']		= '/imagepost/'.$foto->getClientOriginalName();
-			$data['cby']		= Auth::user()->name;
+			$data['cby']		= Auth::user()->id;
 			$data['mby']		= NULL;
 			$data['date']		= Date('d M Y');
 			$data['cdate']		= date('Y-m-d H:i:s');
@@ -80,7 +80,7 @@ class PostController extends Controller
 			$data['flag']		= $flag;
 			$data['isi']		= $request->isi;
 			$data['foto']		= 'imagepost/default.png';
-			$data['cby']		= Auth::user()->name;
+			$data['cby']		= Auth::user()->id;
 			$data['mby']		= NULL;
 			$data['date']		= Date('d M Y');
 			$data['cdate']		= date('Y-m-d H:i:s');
@@ -132,8 +132,7 @@ class PostController extends Controller
 			$data['flag']		= $flag;
 			$data['isi']		= $request->isi;
 			// $data['foto']		= '/imagepost/'.$foto->getClientOriginalName();
-			$data['mby']		= Auth::user()->name;
-			$data['date']		= Date('d M Y');
+			$data['mby']		= Auth::user()->id;
 			$data['mdate']		= date('Y-m-d H:i:s');
 			$data['startdate']  = date('Y-m-d', strtotime($request->tgl_awal));
 			$data['enddate']	= date('Y-m-d', strtotime($request->tgl_akhir));
@@ -161,8 +160,7 @@ class PostController extends Controller
 			$data['flag']		= $flag;
 			$data['isi']		= $request->isi;
 			// $data['foto']		= '/imagepost/'.$foto->getClientOriginalName();
-			$data['mby']		= Auth::user()->name;
-			$data['date']		= Date('d M Y');
+			$data['mby']		= Auth::user()->id;
 			$data['mdate']		= date('Y-m-d H:i:s');
 			$data['startdate']  = date('Y-m-d', strtotime($request->tgl_awal));
 			$data['enddate']	= date('Y-m-d', strtotime($request->tgl_akhir));

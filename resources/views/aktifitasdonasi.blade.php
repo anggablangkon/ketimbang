@@ -76,16 +76,12 @@
                   <div class="row">
                     <div class="col-sm-6 text-left">Sisa Waktu <br/> 
                       @php 
-
                       $enddate = $tampil->enddate;
                       $enddate = new DateTime($enddate);
-
                       $today   = new DateTime();
-
                       $selisih = $enddate->diff($today);
                       $tgl     = $selisih->d + 1 . ' hari';
                       echo $tgl;
-
                       @endphp
                     </div>
                     <div class="col-sm-6 text-right">Terkumpul <br/> Rp. 0 </div>
@@ -118,7 +114,11 @@
       </div>
     </div>
 
+
     <div class="col-sm-3">
+       @mobile
+        <br/>
+      @endmobile
       <h5 class="h5" style="font-weight: bold; color: black;">Iklan Adsense</h5>
 
       <div class="card bg-light text-dark">

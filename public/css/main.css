@@ -47,13 +47,13 @@ html {
   overflow-x: hidden;
 }
 
-p {
+/*p {
   font-size: 14px;
   color: #a0a6ad;
   line-height: 26px;
   font-family: 'Roboto', sans-serif;
   margin-bottom: 0;
-}
+}*/
 
 a:hover, a:focus {
   color: #3c9cfd;
@@ -67,12 +67,12 @@ a {
   transition: all 0.3s ease-in-out;
 }
 
-h1, h2, h3, h4, h5 {
+/*h1, h2, h3, h4, h5 {
   font-family: 'Poppins', sans-serif;
   font-size: 40px;
   font-weight: 700;
   color: #191c1e;
-}
+}*/
 
 ul {
   margin: 0;

@@ -7,7 +7,7 @@
                 <div class="left-side-logo d-block d-lg-none">
                     <div class="text-center">
                         
-                        <a href="index.html" class="logo"><img src="assets/images/logo-dark.png" height="20" alt="logo"></a>
+                        <a href="index.html" class="logo"><img src="{{ asset('/images/knp.png') }}" height="40" alt="logo"></a>
                     </div>
                 </div>
 
@@ -36,7 +36,6 @@
                                 <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-broadcast"></i> <span> Kegiatan </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ url('/lihatpostingan') }}">Post Artikel</a></li>
-                                    <li><a href="{{ url('/') }}">List Data Anggota</a></li>
                                 </ul>
                             </li>
 

@@ -71,7 +71,7 @@
                       <div class="row">
                         <div class="col-md-12">
                           <div class="site-info float-left">
-                            <p>&copy; {{ date('Y') }} - @Ketimbang Ngemis Pandeglang <a href="https://kokitindo.com" rel="nofollow"></a></p>
+                            <p>&copy; 2019 - {{ date('Y') }}  @Powered By Startup Kokitindo <a href="https://kokitindo.com" rel="nofollow"></a></p>
                           </div>              
                           <div class="float-right">  
                             <ul class="footer-social">

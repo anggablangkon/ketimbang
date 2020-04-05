@@ -31,7 +31,13 @@
 				@foreach($blogs as $tampil)
 				<tr>
 					<td>{{ $no++ }}</td>
-					<td><img src="{{asset('imagepost/' .$tampil->id.'.'.$tampil->foto)}}" width="50px" height="50px"></td>
+					<td>
+						@if(strlen($tampil->foto) >= 6)
+		                  <img src="{{ asset($tampil->foto) }}" width="50px" height="50px">
+		                @else
+							<img src="{{asset('imagepost/' .$tampil->id.'.'.$tampil->foto)}}" width="50px" height="50px">
+		                @endif
+					</td>
 					<td>{{ $tampil->judul }}</td>
 					<td>{{ $tampil->date }}</td>
 					<td>
@@ -41,7 +47,7 @@
 						<span class="badge badge-danger">{{ strtoupper($tampil->jenispost) }}</span>
 						@endif
 					</td>
-					<td>{{ $tampil->cby }}</td>
+					<td>{{ $tampil->name }}</td>
 					<td>
 						<a href="" class="btn-sm btn-danger" data-toggle="modal" data-target="#myModal">Hapus</a>
 						<!-- Modal digunakan untuk popuv delete data -->
