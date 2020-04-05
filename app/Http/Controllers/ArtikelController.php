@@ -42,9 +42,7 @@ class ArtikelController extends Controller
     public function aktifitasdonasi()
     {
         
-        $paginate  = $donasi = DB::table('postingan')->where('jenispost', 'donasi')->paginate(3);
-
-       
+        $paginate  = $donasi = DB::table('postingan')->where('jenispost', 'donasi')->orderByDesc('cdate')->paginate(3);
 
 
         return view('/aktifitasdonasi', compact('donasi','paginate'));
