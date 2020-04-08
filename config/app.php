@@ -233,6 +233,7 @@ return [
 
         // Model Database
         'PostModel' => App\Providers\Model\PostModel::class,
+        'ArtikelModel' => App\Providers\Model\ArtikelModel::class,
 
     ],
 

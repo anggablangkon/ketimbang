@@ -4,7 +4,7 @@
 
 @section('css')
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
- <link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
 @endsection
 
 @section('content')
@@ -48,11 +48,13 @@
 						<option value="0,Blogs" class="collapsed text-dark" data-toggle="collapse"
 						data-parent="#accordion" href="#blogs"
 						aria-expanded="false" aria-controls="blogs">Blogs</option>
+						@if(Auth::user()->flaglevel == 1)
 						<option value="1,Donasi" class="collapsed text-dark" data-toggle="collapse"
 						data-parent="#accordion" href="#donasi"
 						aria-expanded="false" aria-controls="donasi">
 						Donasi
-					</option>
+						</option>
+						@endif
 				</select>
 
 				<div class="accordion" id="accordion">
@@ -62,28 +64,28 @@
 								<h5 style="color: green;">Donasi <i class="fa fa-check"></i></h5>
 							</div>
 							<div class="form-group">
-				<label>Tanggal Awal</label>
-				<div class="input-group date">
-					<div class="input-group-addon">
-						<span class="glyphicon glyphicon-th"></span>
-					</div>
-					<input placeholder="masukkan tanggal Awal" type="text" class="form-control datepicker"  name="tgl_awal">
-				</div>
-			</div>
-			<div class="form-group">
-				<label>Tanggal Akhir</label>
-				<div class="input-group date">
-					<div class="input-group-addon">
-						<span class="fa fa-date"></span>
-					</div>
-					<input placeholder="masukkan tanggal Akhir" type="text" class="form-control datepicker" name="tgl_akhir">
-				</div>
-			</div>
+								<label>Tanggal Awal</label>
+								<div class="input-group date">
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-th"></span>
+									</div>
+									<input placeholder="masukkan tanggal Awal" type="text" class="form-control datepicker"  name="tgl_awal">
+								</div>
+							</div>
+							<div class="form-group">
+								<label>Tanggal Akhir</label>
+								<div class="input-group date">
+									<div class="input-group-addon">
+										<span class="fa fa-date"></span>
+									</div>
+									<input placeholder="masukkan tanggal Akhir" type="text" class="form-control datepicker" name="tgl_akhir">
+								</div>
+							</div>
 
-			<div class="form-group">
-				<label>Target Nominal</label>
-				<input type="text" autocomplete="off" autofocus name="nominal" class="form-control" id="judul" placeholder="Nominal">
-			</div>
+							<div class="form-group">
+								<label>Target Nominal</label>
+								<input type="text" autocomplete="off" autofocus name="nominal" class="form-control" id="judul" placeholder="Nominal">
+							</div>
 						</div>
 					</div>
 					<div class="accordion-group">
@@ -140,9 +142,9 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
-  $( function() {
-    $( ".datepicker" ).datepicker({ dateFormat: 'dd-mm-yy'}).val();
-  } );
-  </script>
+	$( function() {
+		$( ".datepicker" ).datepicker({ dateFormat: 'dd-mm-yy'}).val();
+	} );
+</script>
 
 @endsection

@@ -11,22 +11,22 @@ class ArtikelController extends Controller
 {
     public function bacapostingan($slug)
     {
-    	//memgambil data untuk menampilkan postingan
-    	$postingan    = DB::table('postingan as tb1')
-                        ->select('tb1.judul','tb2.name','tb1.date','tb1.foto','tb1.isi','tb2.id','tb2.created_at')
-                        ->leftjoin('users as tb2','tb2.id','=','tb1.cby')
-                        ->where('tb1.slug', $slug)
-                        ->first();
-
+    	/*
+        memgambil data untuk menampilkan postingan
+        */
+        $postingan    = app('ArtikelModel')->Postingan($slug);
         $idpenulis    = $postingan->id;
 
-        //mengambil lima postingan
-        $listpost     = DB::table('postingan as tb1')
-                        ->select('tb1.judul','tb1.slug')
-                        ->where('tb1.cby','=',$idpenulis)
-                        ->where('tb1.jenispost','=','blogs')
-                        ->paginate(5);
+        /*
+        mengambil lima postingan
+        */
+        $listpost     = app('ArtikelModel')->Listpost($idpenulis);
         $no           = 1;
+
+        /*
+        membuat views pembaca postingan
+        */
+        $viewers      = app('ArtikelModel')->Viewers($slug);
 
     	return view('/bacapostingan', compact('postingan','listpost','no'));
 
@@ -35,8 +35,13 @@ class ArtikelController extends Controller
     public function lihatdonasi($slug)
     {
     	//memgambil data untuk menampilkan postingan
-        $postingan    = DB::table('postingan')->where('slug', $slug)->first();
-    	$donasi       = DB::table('postingan')->where('jenispost', 'donasi')->paginate(8);
+        $postingan    = app('ArtikelModel')->Postingan($slug);
+        $donasi       = app('ArtikelModel')->Donasi();
+        /*
+        membuat views pembaca postingan
+        */
+        $viewers      = app('ArtikelModel')->Viewers($slug);
+
     	return view('/lihatdonasi', ['postingan' => $postingan, 'donasi' => $donasi]);
 
     }

@@ -26,7 +26,7 @@
 
 
                   <h5 class="h5" style="font-weight: bold; color: black;">{{ strtoupper($postingan->judul) }}</h5>
-                  <p>Tanggal Post : {{ $postingan->date }}</p>
+                  <p>Tanggal Post : {{ $postingan->date }} <i class="lni lni-eye"></i> {{$postingan->views}}</p>
                   <hr/>
                   @desktop
                   <center>
