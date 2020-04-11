@@ -19,12 +19,15 @@
       <div class="col-sm-4">
        <div class="card bg-light text-dark">
         <div class="card-body">
+          <form action="{{url('/searchblogs')}}" method="post">
+          {{csrf_field()}}
           <div class="input-group">
-            <input type="text" class="" placeholder=" Cari Kata Kunci Blogs" style="width: 60%; border-radius: 2px;">
+            <input type="text" name="search" class="" placeholder=" Cari Kata Kunci Blogs" style="width: 60%; border-radius: 2px;">
             <div class="input-group-append">
               <button class="btn btn-primary" style="width: 100%;" type="submit">Cari</button>
             </div>
           </div>
+          </form>
 
         </div>
       </div>
@@ -65,17 +68,17 @@
 
       <div class="row">
        <!-- paginate -->
-       <div class="col-lg-4 col-md-6 col-xs-12 blog-item">
+     {{--   <div class="col-lg-4 col-md-6 col-xs-12 blog-item">
         @if ($paginate1->lastPage() > 1)
         <ul class="pagination">
-          <li class="page-item"><a class="page-link" href="{{ $paginate->url(1) }}">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="{{ $paginate1->url(1) }}">Previous</a></li>
           @for ($i = 1; $i <= $paginate1->lastPage(); $i++)
-          <li class="page-item"><a class="page-link" href="{{ $paginate->url($i) }}">{{ $i }}</a></li>
+          <li class="page-item"><a class="page-link" href="{{ $paginate1->url($i) }}">{{ $i }}</a></li>
           @endfor
-          <li class="page-item"><a class="page-link" href="{{ $paginate->url($paginate->currentPage()+1) }}" >Next</a></li>
+          <li class="page-item"><a class="page-link" href="{{ $paginate1->url($paginate1->currentPage()+1) }}" >Next</a></li>
         </ul>
         @endif
-      </div>
+      </div> --}}
     </div>
 
   </div>

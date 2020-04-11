@@ -34,17 +34,16 @@
         <hr/>
 
         <div id="collapseOne" class="collapse"  data-parent="#accordion">
-          <form action="" method="">
-
+          <form action="{{ url('/searchdonasi') }}" method="post">
+          {{csrf_Field()}}
            <div class="row">
              <div class="col-sm-9">
-               <input type="text" class="form-control" style="width: 100%; height: 50%; text-align: left; border-color: blue;" name="">
+               <input type="text" class="form-control" style="width: 100%; height: 50%; text-align: left; border-color: blue;" name="search">
              </div>
              <div class="col-sm-3">
                <button class="btn btn-success"> Terapkan</button>
              </div>
            </div>
-
          </form>
          <hr/>
        </div>
@@ -98,6 +97,7 @@
                 </div> 
                 @else
                   <b><i class="lni lni-warning"></i> Maaf! Donasi sudah ditutup</b>
+                  &nbsp;
                 @endif
               </div>
             </div>
@@ -108,7 +108,7 @@
 
       </div>
 
-      <div class="row">
+      {{-- <div class="row">
        <!-- paginate -->
        <div class="col-lg-4 col-md-6 col-xs-12 blog-item">
         @if ($paginate->lastPage() > 1)
@@ -121,7 +121,7 @@
         </ul>
         @endif
       </div>
-    </div>
+      </div> --}}
   </div>
 
 

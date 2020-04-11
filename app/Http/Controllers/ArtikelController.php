@@ -65,7 +65,40 @@ class ArtikelController extends Controller
         return view('/aktifitasdonasi', compact('donasi','paginate'));
     }
     
-     public function tentangkami()    
+    public function pengumumanrecruitment()
+    {
+        //mengambil data kedalam tabel
+        $data   = DB::table('recruitment')->orderBy('nama', 'Asc')->get();
+        
+        return view('/pengumumanrecruitment', ['data' => $data]);
+    }
+    public function hash()
+    {
+        echo  hash::make('123456');
+    }
+
+    #update 04 09 2020
+    public function searchblogs(Request $request){
+
+        $judul       = $request->search;
+        $blogs       = app('ArtikelModel')->SearchArtikel($judul);
+        $paginate1   = $blogs;
+
+        return view('/aktifitasdandonasi', ['blogs' => $blogs, 'paginate1' => $paginate1]);
+
+    }
+
+    public function searchdonasi(Request $request){
+
+        $judul       = $request->search;
+        $donasi      = app('ArtikelModel')->SearchDonasi($judul);
+        $paginate    = $donasi; 
+
+        return view('/aktifitasdonasi', compact('donasi','paginate'));
+
+    }
+
+    public function tentangkami()    
     {
         return view('/tentangkami');
     }
@@ -83,17 +116,5 @@ class ArtikelController extends Controller
     public function recruitment()
     {
         return view('/recruitment');
-    }
-    
-    public function pengumumanrecruitment()
-    {
-        //mengambil data kedalam tabel
-        $data   = DB::table('recruitment')->orderBy('nama', 'Asc')->get();
-        
-        return view('/pengumumanrecruitment', ['data' => $data]);
-    }
-    public function hash()
-    {
-        echo  hash::make('123456');
     }
 }

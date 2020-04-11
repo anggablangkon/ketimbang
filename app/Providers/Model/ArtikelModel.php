@@ -74,4 +74,18 @@ class ArtikelModel extends ServiceProvider
 
         return $donasi;
     }
+
+    public function SearchArtikel($judul){
+
+        $blogs  = DB::table('postingan')->where('jenispost', 'blogs')->where('judul','like','%'.$judul.'%')->paginate(6);
+
+        return $blogs;
+    }
+
+    public function SearchDonasi($judul){
+
+        $donasi = DB::table('postingan')->where('jenispost', 'donasi')->where('judul','like','%'.$judul.'%')->get();
+
+        return $donasi;
+    }
 }
