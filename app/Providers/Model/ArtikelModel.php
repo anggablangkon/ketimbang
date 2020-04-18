@@ -88,4 +88,26 @@ class ArtikelModel extends ServiceProvider
 
         return $donasi;
     }
+
+    public function ListDonasi(){
+
+        $donasi = DB::table('postingan as tb1')
+                    ->select('tb1.slug','tb1.foto','tb1.judul','tb1.cby','tb2.name')
+                    ->Join('users as tb2','tb1.cby','=','tb2.id')
+                    ->where('tb1.jenispost', 'donasi')
+                    ->orderByDesc('tb1.cdate')->paginate(3);
+
+        return $donasi;
+    }
+
+    public function ListBlogs(){
+
+        $blogs = DB::table('postingan as tb1')
+                    ->select('tb1.slug','tb1.foto','tb1.judul','tb1.cby','tb2.name','tb1.date')
+                    ->Join('users as tb2','tb1.cby','=','tb2.id')
+                    ->where('tb1.jenispost', 'blogs')
+                    ->orderByDesc('tb1.cdate')->get();
+
+        return $blogs;
+    }
 }

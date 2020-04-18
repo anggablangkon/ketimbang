@@ -21,7 +21,7 @@
 
         <div class="row">
           <div class="col-sm-8" style="padding-top: 15px; color: black;">
-            Cari Aktivitas Baru, 35 aktivitas membutuhkan bantuan
+            Cari Aktivitas Baru, {{ count($donasi) }} aktivitas membutuhkan bantuan
           </div>
           <div class="col-sm-3" >
             <button class="btn btn-primary btn-sm"  data-toggle="collapse" href="#collapseOne" style="color: black;">
@@ -68,7 +68,7 @@
                 <br/><br/>
                 @endif
                 <div class="author">
-                  <span class="name"><a style="color: #403636;" href="#">Post by : {{ $tampil->cby }}</a></span>
+                  <span class="name"><a style="color: #403636;" href="#">Oleh : {{ $tampil->name }}</a></span>
                   {{-- <span class="date float-right">{{ $tampil->date }}</span> --}}
                 </div>
               </div>

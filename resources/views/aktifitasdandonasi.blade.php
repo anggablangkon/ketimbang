@@ -54,8 +54,8 @@
                   <br/><br/>
                 @endif
                 <div class="author">
-                  <span class="name"><a href="#">Posted by : {{ $tampil->cby }}</a></span>
-                  <span class="date float-right">{{ $tampil->date }}</span>
+                  <span class="name"><a href="#">Oleh : {{ $tampil->name }}</a></span><br/>
+                  <span class="date">{{ $tampil->date }}</span>
                 </div>
               </div>
             </div>

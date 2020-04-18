@@ -26,7 +26,11 @@
 					<td>{{ $tampil->nama }}</td>
 					<td>{{ $tampil->statusanggota }}</td>
 					<td>
-						<a href="" class="btn-sm btn-danger" data-toggle="modal" data-target="#myModal">Hapus</a>
+						<a href="" class="btn-sm btn-danger" data-toggle="modal" data-target="#myModal">
+							<i class="dripicons-document-remove"></i>
+							Hapus
+						</a>
+						&nbsp;
 						<!-- Modal digunakan untuk popuv delete data -->
 						<div class="modal fade" id="myModal" role="dialog">
 							<div class="modal-dialog">
@@ -47,7 +51,15 @@
 
 							</div>
 						</div>
-						<a href="{{ url('/editanggota') }}/{{ $tampil->noanggota }}"class="btn-sm btn-warning">Edit</a>
+						<a href="{{ url('/editanggota') }}/{{ $tampil->noanggota }}"class="btn-sm btn-warning">
+							<i class="dripicons-document-edit"></i>
+							Edit
+						</a>
+						&nbsp;
+						<a href=""class="btn-sm btn-primary">
+							<i class="dripicons-rocket"></i>
+							Invite Member
+						</a>
 					</td>
 				</tr>
 				@endforeach

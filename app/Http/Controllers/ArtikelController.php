@@ -50,19 +50,20 @@ class ArtikelController extends Controller
     public function aktifitasdandonasi()
     {
         
-        $paginate  = $donasi = DB::table('postingan')->where('jenispost', 'donasi')->paginate(3);
-        $paginate1 = $blogs  = DB::table('postingan')->where('jenispost', 'blogs')->paginate(6);
+        $blogs     = app('ArtikelModel')->ListBlogs();
+        
+        $paginate1 = $blogs;  
 
-        return view('/aktifitasdandonasi', ['donasi' => $donasi, 'blogs' => $blogs, 'paginate' => $paginate, 'paginate1' => $paginate1]);
+        return view('/aktifitasdandonasi', ['blogs' => $blogs, 'paginate1' => $paginate1]);
     }
 
     public function aktifitasdonasi()
     {
-        
-        $paginate  = $donasi = DB::table('postingan')->where('jenispost', 'donasi')->orderByDesc('cdate')->paginate(3);
 
-
+        $donasi     = app('ArtikelModel')->ListDonasi();
+        $paginate   = $donasi;
         return view('/aktifitasdonasi', compact('donasi','paginate'));
+
     }
     
     public function pengumumanrecruitment()
