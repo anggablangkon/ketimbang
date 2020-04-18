@@ -17,10 +17,10 @@
     <div class="row">
 
       <div class="col-sm-8">
-        {{-- <div class="card bg-light text-dark">
-          <div class="card-body"> --}}
+        <div class="card bg-light text-dark">
+          <div class="card-body">
 
-            <div class="single-team wow fadeInUp" data-wow-delay="0.2s">
+            <!-- <div class="single-team wow fadeInUp" data-wow-delay="0.2s"> -->
               <div class="team-details">
                 <div class="team-inner">
 
@@ -45,63 +45,69 @@
               </div>
             </div>
           </div>
+        </div>
 
 
-          <div class="col-sm-4">
-          
-            <div class="single-team wow fadeInUp" data-wow-delay="0.2s">
-              <div class="team-details">
-                <div class="team-inner">
+        <div class="col-sm-4">
 
-                  <center>
-                    <img src="{{asset('/images/anga.jpg')}}" alt="user" class="rounded-circle" style="width: 85px; height: 85px;">
-                  </center> 
-                  <br/>
-                  <div class="table-responsive">
-                    <table class="table table-bordered table-striped ">
-                      <tbody>
-                        <tr>
-                          <th>Penulis </th>
-                          <th> {{ $postingan->name }}</th>
-                        </tr>
-                        <tr>
-                          <th>Bergabung </th>
-                          <th> {{ $postingan->created_at }}</th>
-                        </tr>
-                        <tr>
-                          <th colspan="2">
-                            <center>
-                              <a class="btn btn-primary"><i class='lni lni-user'></i> Detail Profile </a>
-                            </center>
-                          </th>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+          <div class="card bg-light text-dark">
+          <div class="card-body">
+            <div class="team-details">
+              <div class="team-inner">
 
+                <center>
+                  <img src="{{asset('/images/anga.jpg')}}" alt="user" class="rounded-circle" style="width: 85px; height: 85px;">
+                </center> 
+                <br/>
+                <div class="table-responsive">
+                  <table class="table table-bordered mini table-striped" style="font-size: 12px;">
+                    <tbody>
+                      <tr>
+                        <th>Penulis </th>
+                        <th> {{ $postingan->name }}</th>
+                      </tr>
+                      <tr>
+                        <th>Bergabung </th>
+                        <th> {{ $postingan->created_at }}</th>
+                      </tr>
+                      <tr>
+                        <th colspan="2">
+                          <center>
+                            <a class="btn btn-primary"><i class='lni lni-user'></i> Detail Profile </a>
+                          </center>
+                        </th>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
+
               </div>
             </div>
-            <br/>
-            <div class="single-team wow fadeInUp" data-wow-delay="0.2s">
-              <div class="team-details">
-                <div class="team-inner">
-                  <b>Tulisan trending yang dibuat :</b>
-                  <hr/>
-                  @foreach($listpost as $key => $values)
-                  <ul>
-                    <li>{{$no++}}. <a href="{{ url('/bacapostingan/') }}/{{ $values->slug }}">{{ substr(strtoupper($values->judul),0,30) }} ..</a></li>
-                  </ul>
-                  @endforeach
-                </div>
-              </div>
-            </div>
-
           </div>
+          </div>
+          <br/>
+
+          <div class="card bg-light text-dark">
+          <div class="card-body">
+            <div class="team-details">
+              <div class="team-inner">
+                <b>Tulisan trending yang dibuat :</b>
+                <hr/>
+                @foreach($listpost as $key => $values)
+                <ul>
+                  <li>{{$no++}}. <a href="{{ url('/bacapostingan/') }}/{{ $values->slug }}">{{ substr(strtoupper($values->judul),0,30) }} ..</a></li>
+                </ul>
+                @endforeach
+              </div>
+            </div>
+          </div>
+          </div>
+
         </div>
       </div>
-    </section>
-    <!-- blog Section End -->
+    </div>
+  </section>
+  <!-- blog Section End -->
 
 
-    @endsection
+  @endsection

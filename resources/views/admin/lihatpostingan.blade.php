@@ -6,15 +6,14 @@
 <div class="card m-b-30">
 	<div class="card card-body">
 
-		<a href="{{ url('/tambahpostingan') }}" class="btn btn-danger" @desktop style="width: 20%;" @enddesktop>
-			<i class="dripicons-document-edit "></i>
+		<a href="{{ url('/tambahpostingan') }}" class="btn btn-primary" @desktop style="width: 20%;" @enddesktop>
+			<i class="dripicons-document-new"></i>
 			Buat Post Baru
 		</a>
 
 		<hr/>
 		<div class="table-responsive">
-		<table id="datatable" class="table  table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-
+		<table id="datatable" class="table  table-striped table-bordered nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%; font-size: 12px;">
 			<thead>
 				<tr>
 					<th>No</th>
@@ -49,7 +48,9 @@
 					</td>
 					<td>{{ $tampil->name }}</td>
 					<td>
-						<a href="" class="btn-sm btn-danger" data-toggle="modal" data-target="#myModal">Hapus</a>
+						<a title="hapus" href="" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#myModal">
+							<i class="dripicons-cross"></i>
+						</a>
 						<!-- Modal digunakan untuk popuv delete data -->
 						<div class="modal fade" id="myModal" role="dialog">
 							<div class="modal-dialog">
@@ -71,7 +72,9 @@
 
 							</div>
 						</div>
-						<a  href="{{ url('/editpostingan') }}/{{ $tampil->id }}" class="btn-sm btn-warning">Edit</a>
+						<a  href="{{ url('/editpostingan') }}/{{ $tampil->id }}" class="btn btn-sm btn-info">
+							<i class="dripicons-document-edit"></i>
+						</a>
 					</td>
 				</tr>
 				@endforeach

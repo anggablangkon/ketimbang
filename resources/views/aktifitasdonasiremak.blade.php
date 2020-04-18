@@ -35,8 +35,8 @@
 
         <div id="collapseOne" class="collapse"  data-parent="#accordion">
           <form action="{{ url('/searchdonasi') }}" method="post">
-            {{csrf_Field()}}
-            <div class="row">
+          {{csrf_Field()}}
+           <div class="row">
              <div class="col-sm-9">
                <input type="text" class="form-control" style="width: 100%; height: 50%; text-align: left; border-color: blue;" name="search">
              </div>
@@ -71,6 +71,34 @@
                   <span class="name"><a style="color: #403636;" href="#">Post by : {{ $tampil->cby }}</a></span>
                   {{-- <span class="date float-right">{{ $tampil->date }}</span> --}}
                 </div>
+                @php
+                $enddate = $tampil->enddate;
+                $enddate = new DateTime($enddate);
+                $today   = new DateTime();
+                $selisih = $enddate->diff($today);
+                $tgl     = $selisih->d . ' hari';
+                @endphp
+                <hr/>
+                @if($tgl != 0)
+                @php
+                  $nominalmasuk = 10;
+                  $persentasi=round($nominalmasuk/$tampil->nominalpencapaian * 100,2);
+                @endphp
+                <div class="row">
+                  <div class="col-sm-6 text-left">Sisa Waktu <br/> 
+                    @php 
+                    echo $tgl;
+                    @endphp
+                  </div>
+                  <div class="col-sm-6 text-right">Terkumpul <br/> Rp. {{$nominalmasuk}} </div>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar" style="width:{{ $persentasi }}%; color: black;">Tercapai {{ $persentasi }}%</div>
+                </div> 
+                @else
+                  <b><i class="lni lni-warning"></i> Maaf! Donasi sudah ditutup</b>
+                  &nbsp;
+                @endif
               </div>
             </div>
             <!-- Blog Item Wrapper Ends-->
@@ -93,7 +121,7 @@
         </ul>
         @endif
       </div>
-    </div> --}}
+      </div> --}}
   </div>
 
 

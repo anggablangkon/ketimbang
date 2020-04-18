@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <div class="sidebar-inner slimscrollleft">
+    <div class="sidebar-inner slimscrollleft" >
 
         <div id="sidebar-menu">
             <ul>
@@ -26,7 +26,7 @@
 
                 @if(Auth::user()->flaglevel == 1)
                 <li class="has_sub">
-                    <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-broadcast"></i> <span> Keanggotaan </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-user-group"></i> <span> Keanggotaan </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                     <ul class="list-unstyled">
                         <li><a href="{{ url('/tambahanggota') }}">Tambah Anggota</a></li>
                         <li><a href="{{ url('/listdataanggota') }}">List Data Anggota</a></li>
@@ -41,7 +41,7 @@
                     </ul>
                 </li>
 
-                <li class="menu-title">Extra</li>
+                <!-- <li class="menu-title">Extra</li>
 
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-location"></i><span> Maps </span> <span class="badge badge-danger badge-pill float-right">2</span></a>
@@ -49,7 +49,7 @@
                         <li><a href="maps-google.html"> Google Map</a></li>
                         <li><a href="maps-vector.html"> Vector Map</a></li>
                     </ul>
-                </li>
+                </li> -->
 
             </ul>
         </div>
