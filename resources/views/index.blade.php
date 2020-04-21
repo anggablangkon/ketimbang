@@ -2,6 +2,14 @@
 
 @section('title','Ketimbang Ngemis Pandeglang')
 
+@section('css')
+  <style type="text/css">
+    .kokit{
+      width: 100%;
+    }
+  </style>
+@endsection
+
 @section('halamanatas')
 
 @desktop
@@ -13,11 +21,13 @@
         <h6>
           Komunitas yang didirikan oleh Rizki Pratama Wijaya seorang mahasiswa dari Jogyakarta yang terinspirasi karena bertemu dengan nenek penjual perabotan rumah tangga pada sholat Jumat. Dari kejadian itu, berbenak dalam pikirannya untuk membuat akun instagram @ketimbang.ngemis tepat pada tanggal 12 Juni 2015.
         </h6>
+        <center>
         <div class="header-button">
           <a href="{{ url('/tentangkami') }}" class="btn btn-border-filled">Kenal Kami Lebih Jauh</a>
           <a href="#screenshots" class="btn btn-border">Program Kegiatan</a>
           <a href="https://www.youtube.com/watch?v=9KaHm7gslPg" target="_blank" class="btn btn-border video-popup">Video Kami</a>
         </div>
+        </center>
       </div>
     </div>
     <div class="col-lg-4 col-md-12 col-xs-12">
@@ -42,21 +52,19 @@
           <h6>
             Komunitas yang didirikan oleh Rizki Pratama Wijaya seorang mahasiswa dari Jogyakarta yang terinspirasi karena bertemu dengan nenek penjual perabotan rumah tangga pada sholat Jumat. Dari kejadian itu, berbenak dalam pikirannya untuk membuat akun instagram @ketimbang.ngemis tepat pada tanggal 12 Juni 2015.
           </h6>
+          <div class="intro-img">
+           <img src="{{ asset('images/knp.PNG') }}" style="height: 150px;" alt="">
+          </div>            
           <div class="header-button">
-            <a href="{{ url('/tentangkami') }}" class="btn btn-border-filled">Kenal Kami Lebih Jauh</a>
-            <a href="{{ url('/rancangankerja') }}" class="btn btn-border">Program Kegiatan</a>
+            <a href="{{ url('/tentangkami') }}" class="btn kokit btn-border-filled">Kenal Kami Lebih Jauh</a>
+            <a href="{{ url('/rancangankerja') }}" class="btn kokit btn-border">Program Kegiatan</a>
+            <a href="https://www.youtube.com/watch?v=9KaHm7gslPg" target="_blank" class="btn kokit btn-border video-popup">Video Kami</a>
           </div>
         </div>
       </div>
-      <div class="col-lg-5 col-md-12 col-xs-12">
-        <div class="intro-img">
-         <img src="{{ asset('images/knp.PNG') }}" style="height: 250px;" alt="">
-       </div>            
-     </div>
    </div> 
  </div>  
 </center>
-<br/>
 @endmobile
 
 @endsection
@@ -72,7 +80,6 @@
     </div>
     <div class="row">
       <div class="touch-slider owl-carousel">
-
         @foreach($anggota as $tampil)
         <!-- start content -->
         <div class="col-lg-12 col-md-12 col-xs-12">
@@ -105,7 +112,7 @@
 
 <!-- Blog Section -->
   <div class="container">
-    <div class="row mt">
+    <div class="row @desktop mt @enddesktop">
       <div class="col-lg-6 col-md-12 col-sm-12">
           <div style="color: black;">
             <p class="btn btn-subtitle">Donasi</p>
@@ -115,8 +122,9 @@
           </div>
       </div>
       <div class="col-lg-6 col-md-12 col-sm-12">
-        <div class="img-thumb wow fadeInLeft" data-wow-delay="1.2s">
-          <img class="img-fluid" src="https://preview.uideck.com/items/proton/img/features/img2.png" alt="">
+        <!-- <div class="img-thumb wow fadeInLeft" data-wow-delay="1.2s"> -->
+        <div class="img-thumb wow fadeInLeft">
+          <img class="img-fluid" src="{{ asset('/images/donasbalon.png') }}" alt="">
         </div>
       </div>
     </div>

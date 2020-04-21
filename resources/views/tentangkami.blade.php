@@ -41,21 +41,7 @@
               </center>
               <br/>
               <p style="text-align:justify;">
-                <b>Visi</b>
-                <p>Menjadi sarana media dan komunitas yang berguna bagi masyarakat demi mewujudkan karakteristik manusia yang selalu berusaha.</p>
-                <b>Misi</b>
-                <ul>
-                      <li>
-                          1. Memberikan informasi melalui media sosial mengenai keberadaan sosok ketimbang ngemis di pelosok Indonesia.
-                      </li>
-                      <li>
-                          2. Mengadakan bakti sosial kepada sosok yang selalu berusaha keras untuk selalu tidak meminta-minta
-                          .
-                      </li>
-                      <li>3.	Bekerjasama dengan dinas sosial setempat untuk memberikan penyuluhan terhadap pengemis.</li>
-                      <li>4.	Membantu mereka sosok ketimbang ngemis secara langsung terjun kelapangan dengan cara ikut memasarkan barang dagangannya atau membantu pekerjaan beliau sebagai sosok ketimbang ngemis.</li>
-                      <li>5.	Menjadi tempat penyalur dan memberi kesempatan para donatur untuk ikut menyalurkan donasinya kepada penerima donasi.</li>
-                  </ul>
+                {!! $layouts->isi !!}
               </p>
 
               <br/>

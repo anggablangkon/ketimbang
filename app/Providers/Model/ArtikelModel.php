@@ -77,15 +77,28 @@ class ArtikelModel extends ServiceProvider
 
     public function SearchArtikel($judul){
 
-        $blogs  = DB::table('postingan')->where('jenispost', 'blogs')->where('judul','like','%'.$judul.'%')->paginate(6);
+        #$blogs  = DB::table('postingan')->where('jenispost', 'blogs')->where('judul','like','%'.$judul.'%')->paginate(6);
+
+        $blogs = DB::table('postingan as tb1')
+                    ->select('tb1.slug','tb1.foto','tb1.judul','tb1.cby','tb2.name','tb1.date')
+                    ->Join('users as tb2','tb1.cby','=','tb2.id')
+                    ->where('tb1.jenispost', 'blogs')
+                    ->where('judul','like','%'.$judul.'%')
+                    ->get();
 
         return $blogs;
     }
 
     public function SearchDonasi($judul){
 
-        $donasi = DB::table('postingan')->where('jenispost', 'donasi')->where('judul','like','%'.$judul.'%')->get();
+        #$donasi = DB::table('postingan')->where('jenispost', 'donasi')->where('judul','like','%'.$judul.'%')->get();
 
+        $donasi = DB::table('postingan as tb1')
+                    ->select('tb1.slug','tb1.foto','tb1.judul','tb1.cby','tb2.name')
+                    ->Join('users as tb2','tb1.cby','=','tb2.id')
+                    ->where('tb1.jenispost', 'donasi')
+                    ->where('judul','like','%'.$judul.'%')->get();
+                    
         return $donasi;
     }
 

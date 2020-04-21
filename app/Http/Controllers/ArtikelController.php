@@ -101,17 +101,23 @@ class ArtikelController extends Controller
 
     public function tentangkami()    
     {
-        return view('/tentangkami');
+        $layouts  = app('LayoutsModel')->tentangkami();
+
+        return view('/tentangkami', compact('layouts'));
     }
     
     public function rancangankerja()
     {
-        return view('/rancangankerja');
+        $layouts  = app('LayoutsModel')->rancangankerja();
+
+        return view('/rancangankerja', compact('layouts'));
     }
     
     public function kontakkami()
     {
-        return view('/kontakkami');
+        $layouts  = app('LayoutsModel')->kontakkami();
+
+        return view('/kontakkami', compact('layouts'));
     }
     
     public function recruitment()

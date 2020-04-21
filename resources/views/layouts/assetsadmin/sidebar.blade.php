@@ -41,15 +41,14 @@
                     </ul>
                 </li>
 
-                <!-- <li class="menu-title">Extra</li>
+                <li class="menu-title">Panel</li>
 
-                <li class="has_sub">
-                    <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-location"></i><span> Maps </span> <span class="badge badge-danger badge-pill float-right">2</span></a>
-                    <ul class="list-unstyled">
-                        <li><a href="maps-google.html"> Google Map</a></li>
-                        <li><a href="maps-vector.html"> Vector Map</a></li>
-                    </ul>
-                </li> -->
+                 <li>
+                    <a href="{{ url('/layoutsedit') }}" class="waves-effect">
+                        <i class="dripicons-direction"></i>
+                        <span> Layout Edit <span class="badge badge-success badge-pill float-right"></span></span>
+                    </a>
+                </li>
 
             </ul>
         </div>

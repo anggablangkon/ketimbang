@@ -234,6 +234,7 @@ return [
         // Model Database
         'PostModel' => App\Providers\Model\PostModel::class,
         'ArtikelModel' => App\Providers\Model\ArtikelModel::class,
+        'LayoutsModel' => App\Providers\Model\LayoutsModel::class,
 
     ],
 

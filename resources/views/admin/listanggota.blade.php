@@ -7,8 +7,8 @@
 	<div class="card card-body">
 		<h5>List Data Anggota</h5>
 		<hr/>
-
-		<table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+		<div class="table-responsive">
+		<table id="datatable" class="table table-striped table-bordered nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                
 			<thead>
 				<tr>
@@ -65,6 +65,7 @@
 				@endforeach
 			</tbody>
 		</table>
+		</div>
 
 	</div>
 </div>

@@ -51,7 +51,11 @@ Route::get('/rancangankerja', 'ArtikelController@rancangankerja');
 Route::get('/kontakkami', 'ArtikelController@kontakkami');
 Route::get('/recruitment', 'ArtikelController@recruitment');
 Route::get('/pengumuman-recruitment', 'ArtikelController@pengumumanrecruitment');
-Route::get('/hash', 'ArtikelController@hash');
+
+#edit layouts
+Route::get('/layoutsedit', 'LayoutsController@layoutsedit');
+Route::get('/editlayouts/{id}', 'LayoutsController@editlayouts');
+Route::post('/saveeditlayouts', 'LayoutsController@saveeditlayouts');
 
 
 Auth::routes();
