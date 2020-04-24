@@ -3,9 +3,8 @@
 @section('content')
 
 <div class="row">
-
 	<!-- membuat alert selamat datang -->
-	<div class="col-sm-12">
+	<div class="col-sm-12" @mobile style="padding-top: 15px;" @endmobile>
 
 		<div class="alert alert-success" style="color: black;">
 			<strong> Hallo </strong> {{Auth::user()->name}}, Selamat datang dihalaman <b>Dashboard</b>

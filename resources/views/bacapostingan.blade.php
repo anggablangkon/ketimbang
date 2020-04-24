@@ -47,7 +47,7 @@
           </div>
         </div>
 
-
+        <br/>
         <div class="col-sm-4">
 
           <div class="card bg-light text-dark">
@@ -56,7 +56,7 @@
               <div class="team-inner">
 
                 <center>
-                  <img src="{{asset('/images/anga.jpg')}}" alt="user" class="rounded-circle" style="width: 85px; height: 85px;">
+                  <img src="{{asset('/images/logo.png')}}" alt="user" class="rounded-circle" style="width: 85px; height: 85px;">
                 </center> 
                 <br/>
                 <div class="table-responsive">

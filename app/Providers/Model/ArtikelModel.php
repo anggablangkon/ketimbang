@@ -105,7 +105,7 @@ class ArtikelModel extends ServiceProvider
     public function ListDonasi(){
 
         $donasi = DB::table('postingan as tb1')
-                    ->select('tb1.slug','tb1.foto','tb1.judul','tb1.cby','tb2.name')
+                    ->select('tb1.slug','tb1.foto','tb1.judul','tb1.cby','tb2.name','tb1.id')
                     ->Join('users as tb2','tb1.cby','=','tb2.id')
                     ->where('tb1.jenispost', 'donasi')
                     ->orderByDesc('tb1.cdate')->paginate(3);

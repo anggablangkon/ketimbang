@@ -30,7 +30,9 @@
 
             <div class="content-page">
                 <!-- Start content -->
+                @desktop
                 <div class="content">
+                @enddesktop
 
                 @include('layouts.assetsadmin.navbar')
 
@@ -49,16 +51,19 @@
                                     <h5 class="page-title">Dashboard</h5>
                                 </div>
                             </div>
+    
+                        </div><!-- container fluid -->
+
                             <!-- end row -->
 
                             @yield('content')
                             <!-- end row -->
-    
-                        </div><!-- container fluid -->
-
                     </div> <!-- Page content Wrapper -->
 
-                </div> <!-- content -->
+                @desktop
+                </div> 
+                @enddesktop
+                <!-- content -->
 
                 @include('layouts.assetsadmin.footer')
 
